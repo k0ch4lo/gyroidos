@@ -26,14 +26,14 @@
   <project path="poky" name="poky" />
 
   <!-- MANIFEST Repo -->
-  <project path="trustme/manifest" name="trustme_main" remote="trustmefork" revision="master" />
-  <project path="trustme/build" name="trustme_build" remote="trustmefork" revision="master">
+  <project path="trustme/manifest" name="trustme_main" remote="trustmefork" revision="petalinux" />
+  <project path="trustme/build" name="trustme_build" remote="trustmefork" revision="petalinux">
      <copyfile src="yocto/init_ws_ids.sh" dest="init_ws.sh" />
   </project>
   <project path="trustme/cml" name="device_fraunhofer_common_cml" remote="trustme" revision="trustx-master" />
 
   <!-- TRUSTME -->
-  <project path="meta-trustx" name="meta-trustx" remote="trustmefork" revision="master" />
+  <project path="meta-trustx" name="meta-trustx" remote="trustmefork" revision="petalinux" />
 
   <project path="meta-openembedded" name="meta-openembedded" remote="oe" />
   <project path="meta-virtualization" name="meta-virtualization" />
