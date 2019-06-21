@@ -1,14 +1,18 @@
 pipeline {
    agent any
    stages {
-      stage('Repo') {
-	 steps {
-             sh '''
-                repo init -u https://github.com/fwruck/trustme_main.git -b ${BRANCH_NAME} -m ${BRANCH_NAME}.xml
-                repo sync -j8
-             '''
-
+      stage('Clean') {
+         steps {
+            deleteDir()
          }
+      }
+      stage('Repo') {
+	     steps {
+                sh '''
+                   repo init -u https://github.com/fwruck/trustme_main.git -b ${BRANCH_NAME} -m ${BRANCH_NAME}.xml
+                   repo sync -j8
+                '''
+            }
       }
       stage('Build') {
          agent { dockerfile {
