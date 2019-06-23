@@ -1,18 +1,14 @@
 pipeline {
    agent any
    stages {
-      stage('Clean') {
-         steps {
-            deleteDir()
-         }
-      }
       stage('Repo') {
-	     steps {
-                sh '''
-                   repo init -u https://github.com/fwruck/trustme_main.git -b ${BRANCH_NAME} -m ${BRANCH_NAME}.xml
-                   repo sync -j8
-                '''
-            }
+	 steps {
+             sh '''
+                repo init -u https://github.com/trustm3/trustme_main.git -b master -m ids-x86-yocto.xml
+                repo sync -j8
+             '''
+
+         }
       }
       stage('Build') {
          agent { dockerfile {
@@ -34,30 +30,11 @@ pipeline {
             '''
          }
       }
-      stage('Deploy') {
-         agent { dockerfile {
-            dir 'trustme/build/yocto/docker'
-            args '--entrypoint=\'\''
-            reuseNode true
-         } }
-         steps {
-            sh '''
-               export LC_ALL=en_US.UTF-8
-               export LANG=en_US.UTF-8
-               export LANGUAGE=en_US.UTF-8
-               . init_ws.sh out-yocto
-               rm cmld_git.bbappend
-               cp cmld_git.bbappend.jenkins cmld_git.bbappend
-
-               bitbake trustx-cml
-            '''
-         }
-      }
    }
 
    post {
       always {
          archiveArtifacts artifacts: 'out-yocto/tmp/deploy/images/**/trustme_image/trustmeimage.img', fingerprint: true
       }
-   }
+  }
 }
