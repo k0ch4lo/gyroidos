@@ -5,6 +5,11 @@
   <remote name="trustme"
     fetch="https://github.com/trustm3/"/>
 
+  <remote name="fwruck"
+    fetch="https://github.com/fwruck/"/>
+
+
+
   <remote  name="yocto"
 	  fetch="https://git.yoctoproject.org/git/"/>
 
@@ -24,7 +29,7 @@
 
   <!-- MANIFEST Repo -->
   <project path="trustme/manifest" name="trustme_main" remote="trustme" />
-  <project path="trustme/build" name="trustme_build" remote="trustme">
+  <project path="trustme/build" name="trustme_build" remote="fwruck">
      <copyfile src="yocto/init_ws_ids.sh" dest="init_ws.sh" />
   </project>
   <project path="trustme/cml" name="device_fraunhofer_common_cml" remote="trustme" />
