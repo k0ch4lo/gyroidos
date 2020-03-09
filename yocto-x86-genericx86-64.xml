@@ -35,7 +35,7 @@
   <project path="trustme/cml" name="device_fraunhofer_common_cml" remote="trustme" />
 
   <!-- TRUSTME -->
-  <project path="meta-trustx" name="meta-trustx" remote="trustme" />
+  <project path="meta-trustx" name="meta-trustx" remote="fwruck" />
   <project path="meta-trustx-intel" name="meta-trustx-intel" remote="trustme" />
 
   <project path="meta-openembedded" name="meta-openembedded" remote="oe" />
