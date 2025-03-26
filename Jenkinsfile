@@ -49,10 +49,12 @@ pipeline {
 
 						script {
 							if (SET_KEEP_FOREVER) {
+								echo "Keeping this build forever"
 								currentBuild.setKeepLog(true)
 							}
 
 							if ("" != SET_DISPLAY_NAME) {
+								echo "Setting name to ${SET_DISPLAY_NAME}"
 								currentBuild.displayName = SET_DISPLAY_NAME
 							}
 
